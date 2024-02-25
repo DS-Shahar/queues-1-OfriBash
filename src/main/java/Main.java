@@ -16,6 +16,33 @@ class Main {
 		return seq;
 	}
 
+		public static Time q2_a(Queue <Time> q) {
+		q.insert(null);
+		int hour = q.head().getHour();
+		int min = q.head().getMinute();
+		int sec = q.head().getSecond();
+		Time difference = new Time(hour, min, sec);
+		
+		while(q.head() != null) {
+			hour = q.head().getHour();
+			min = q.head().getMinute();
+			sec = q.head().getSecond();
+			q.insert(q.remove());			
+		}
+		q.remove();
+		
+		difference.setHour(hour - difference.getHour());
+		
+		if(difference.getMinute() > min )
+			difference.setMinute(60 - min);
+		
+		if (difference.getSecond() > sec)
+			difference.setSecond(difference.getSecond() - sec);
+		
+		difference.setSecond(sec - difference.getSecond());
+		return difference;
+	}
+
 
   
   public static void main(String[] args) {

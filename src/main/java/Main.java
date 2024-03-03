@@ -42,10 +42,52 @@ class Main {
 		difference.setSecond(sec - difference.getSecond());
 		return difference;
 	}
-
+public static void q6_service(Queue <Job> q, int time) {
+		Queue <String> done = new Queue <String> ();
+		q.insert(null);
+		while(q.head() != null) {
+			if(time - q.head().getTime() >= 0) {
+				time -= q.head().getTime();
+				done.insert(q.head().getCode());
+			}
+			q.insert(q.remove());
+		}
+		System.out.println(done);
+	}
+	
+	
+	
+	
+	
+	public static String q9_find(Queue <Wolter> q, int cc) {
+		q.insert(null);
+		String id = "not found";
+		boolean find = false;
+		while(q.head() != null) {
+			if(q.head().getCc() >= cc && find == false) {
+				find = true;
+				id = q.head().getId();
+				q.remove();
+			}
+			q.insert(q.remove());
+		}
+		return id;
+	}
 
   
   public static void main(String[] args) {
-    System.out.println("Hello World!");
+    Queue <Wolter> q = new Queue <Wolter> ();
+		q.insert(new Wolter ("1234768", 340));
+		q.insert(new Wolter ("2345098", 456));
+		q.insert(new Wolter ("3456264", 678));
+		q.insert(new Wolter ("4567193", 891));
+		//System.out.print(q9_find(q, 880));
+		
+		Queue <Job> j = new Queue <Job> ();
+		j.insert(new Job ("math", 340));
+		j.insert(new Job ("english", 450));
+		j.insert(new Job ("litreture", 670));
+		j.insert(new Job ("history", 100));		
+		q6_service(j, 1000);
   }
 }

@@ -42,6 +42,20 @@ class Main {
 		difference.setSecond(sec - difference.getSecond());
 		return difference;
 	}
+
+	public static Queue <Ball> q4(String [] arr, int n){
+		Queue <Ball> q = new Queue <Ball> ();
+		boolean [] size = {true, false};
+		for (int i = 0; i < n; i++) {
+			int r = (int) (Math.random() * 4) + 1;
+			int s = (int) (Math.random() * 1) + 1;
+			Ball b = new Ball (arr[r], size[s]);
+			q.insert(b);
+		}
+		return q;
+	}
+
+	
 public static void q6_service(Queue <Job> q, int time) {
 		Queue <String> done = new Queue <String> ();
 		q.insert(null);

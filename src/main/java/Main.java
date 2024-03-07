@@ -16,7 +16,7 @@ class Main {
 		return seq;
 	}
 
-		public static Time q2_a(Queue <Time> q) {
+	public static Time q2_a(Queue <Time> q) {
 		q.insert(null);
 		int hour = q.head().getHour();
 		int min = q.head().getMinute();
@@ -53,6 +53,35 @@ class Main {
 			q.insert(b);
 		}
 		return q;
+	}
+
+	public static Queue <Ball> q4(String [] arr, int n){
+		Queue <Ball> q = new Queue <Ball> ();
+		boolean [] size = {true, false};
+		for (int i = 0; i < n; i++) {
+			int r = (int) (Math.random() * 5) + 1;
+			int s = (int) (Math.random() * 1) + 1;
+			Ball b = new Ball (arr[r], size[s]);
+			q.insert(b);
+		}
+		return q;
+	}
+	
+	public static int q4_a(Queue <Ball> q, String color) {
+		q.insert(null);
+		int index = 0;
+		int count = 0;
+		boolean found = false;
+		
+		while(q.head() != null) {
+			if(color.equals(q.head().toString()) && found == false) {
+				found = true;
+				index = count;
+			}
+			count++;		
+			q.insert(q.remove());
+		}
+		return index;
 	}
 
 	
